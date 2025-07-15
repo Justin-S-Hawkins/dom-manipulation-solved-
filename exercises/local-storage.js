@@ -38,3 +38,45 @@
  */
 
 // Your code goes here...
+const container = document.querySelector(".cardsContainer");
+
+function getFavorites() {
+  return JSON.parse(localStorage.getItem("favorites"));
+}
+
+function saveFavorites(favorites) {
+  localStorage.setItem("favorites", JSON.stringify(favorites));
+}
+
+function favoritesStyle() {
+  const favorites = getFavorites();
+  favorites.forEach((id) => {
+    const card = document.getElementById(id);
+    if (card) {
+      card.style.backgroundColor = "red";
+      card.dataset.fav = "true";
+    }
+  });
+}
+favoritesStyle();
+
+container.addEventListener("click", (e) => {
+  const card = e.target.closest(".card");
+  if (!card) return;
+
+  const id = card.id;
+  let favorites = getFavorites();
+  const isFavorite = favorites.includes(id);
+
+  if (!isFavorite) {
+    card.style.backgroundColor = "red";
+    card.dataset.fav = "true";
+    favorites.push(id);
+  } else {
+    card.style.backgroundColor = "white";
+    card.dataset.fav = "false";
+    favorites = favorites.filter((favId) => favId !== id);
+  }
+
+  saveFavorites(favorites);
+});
