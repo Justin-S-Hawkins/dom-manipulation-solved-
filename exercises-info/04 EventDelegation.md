@@ -49,7 +49,7 @@ const callbackFn = (e) => {
   }
 };
 
-// Grab the container Node by id
+// Grab the container Node by
 const container = document.getElementById('parent');
 
 // add the eventListener to the container Node

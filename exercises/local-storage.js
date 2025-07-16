@@ -49,7 +49,7 @@ function saveFavorites(favorites) {
 }
 
 function favoritesStyle() {
-  const favorites = getFavorites();
+  const favorites = getFavorites() || [];
   favorites.forEach((id) => {
     const card = document.getElementById(id);
     if (card) {
@@ -65,7 +65,7 @@ container.addEventListener("click", (e) => {
   if (!card) return;
 
   const id = card.id;
-  let favorites = getFavorites();
+  let favorites = getFavorites() || [];
   const isFavorite = favorites.includes(id);
 
   if (!isFavorite) {

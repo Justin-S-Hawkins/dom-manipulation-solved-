@@ -56,6 +56,7 @@ function updateCollections(id, direction) {
     icon.classList.remove("fa-heart-circle-plus");
     icon.classList.add("fa-heart-crack");
   }
+
   console.log("Icon found?", icon);
 }
 
